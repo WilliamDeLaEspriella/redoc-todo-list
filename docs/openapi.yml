@@ -1,0 +1,13 @@
+openapi: 3
+info:
+  title: Todo List
+paths:
+  /todo_list:
+    post:
+      summary: "/todo_list"
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
