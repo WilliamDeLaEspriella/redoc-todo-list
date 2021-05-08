@@ -1,0 +1,17 @@
+Todo:
+  type: object
+  properties:
+    name:
+      type: string
+      description: 'para mas validaciones en el schema visite este link https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#schema-object'
+      maxLength: 40
+    days:
+      type: integer
+      example: 5
+    description:
+      type: string
+      maxLength: 100
+ListTodo:
+  type: array
+  items:
+    $ref: "#/Todo"

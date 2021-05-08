@@ -1,0 +1,49 @@
+TodoList:
+    post:
+      security:
+        - ApiKeyAuth: []
+        - BasicAuth: []
+        - BearerAuth: []
+      tags:
+        - tags1
+      summary: "/todo_list"
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      parameters:
+       - $ref: "../components/parameters.yml#/namePath"
+       - $ref: "../components/parameters.yml#/daysPath"
+       - $ref: "../components/parameters.yml#/descriptionPath"
+      responses:
+        200:
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: "../components/schemas.yml#/Todo"
+        401:
+          $ref: '../components/responses.yml#/unauthorized'
+        422:
+          $ref: '../components/responses.yml#/failRequest'
+    get:
+      security:
+        - ApiKeyAuth: []
+        - BasicAuth: []
+        - BearerAuth: []
+      tags:
+        - tags2
+      summary: "/todo_list"
+      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+      parameters:
+        - $ref: "../components/parameters.yml#/nameQuery"
+        - $ref: "../components/parameters.yml#/daysQuery"
+        - $ref: "../components/parameters.yml#/descriptionQuery"
+      responses:
+        200:
+          description: "successful"
+          content:
+            application/json:
+              schema:
+                $ref: "../components/schemas.yml#/ListTodo"
+        401:
+          $ref: '../components/responses.yml#/unauthorized'
+        422:
+          $ref: '../components/responses.yml#/failRequest'
