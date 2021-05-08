@@ -1,2 +1,14 @@
 # redoc-todo-list
-example documentation api with redoc
+
+## INSTALL
+
+``` cmd
+npm install
+npm start
+```
+
+## RUN DOCUMENTATION
+
+```
+npm run docs
+```
