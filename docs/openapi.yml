@@ -21,11 +21,9 @@ info:
     altText: todoList logo
   version: 1.0.1
 
-
 tags:
   - name: tags1
   - name: tags2
-
 
 servers:
   - url: https://api.test.todo-list.com
@@ -48,90 +46,7 @@ components:
       type: http
       scheme: bearer
       bearerFormat: JWT
-  schemas:
-    Todo:
-      type: object
-      properties:
-        name:
-          type: string
-          description: 'para mas validaciones en el schema visite este link https://github.com/OAI/OpenAPI-Specification/blob/main/versions/3.0.3.md#schema-object'
-          maxLength: 40
-        days:
-          type: integer
-          example: 5
-        description:
-          type: string
-          maxLength: 100
-    ListTodo:
-      type: array
-      items:
-        $ref: "#/components/schemas/Todo"
-  parameters:
-      namePath:
-        name: name
-        in: path
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        required: true
-        schema:
-          type: string
-      daysPath:
-        name: days
-        in: path
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        required: true
-        schema:
-          type: integer
-      descriptionPath:
-        name: description
-        in: path
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        schema:
-          type: string
-      nameQuery:
-        name: name
-        in: query
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        schema:
-          type: string
-      daysQuery:
-        name: days
-        in: query
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        schema:
-          type: integer
-      descriptionQuery:
-        name: description
-        in: query
-        description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-        schema:
-          type: string
-  responses:
-    unauthorized: 
-      description: Unauthorized
-      content: 
-        application/json:
-          schema:
-            errors: 
-            type: object
-            properties:
-              errors: 
-                type: object
-                properties:
-                  message:
-                    type: string
-                    example: Unauthorized
-    failRequest: 
-      description: Fail request
-      content: 
-        application/json:
-          schema:
-            errors: 
-            type: object
-            properties:
-              errors: 
-                type: string
-                example: unprocessable entity
-
+      
 security:
   - ApiKeyAuth: []     
   - BasicAuth: [] 
@@ -139,51 +54,4 @@ security:
 
 paths:
   /todo_list:
-    post:
-      security:
-        - ApiKeyAuth: []
-        - BasicAuth: []
-        - BearerAuth: []
-      tags:
-        - tags1
-      summary: "/todo_list"
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      parameters:
-       - $ref: "#/components/parameters/namePath"
-       - $ref: "#/components/parameters/daysPath"
-       - $ref: "#/components/parameters/descriptionPath"
-      responses:
-        200:
-          description: "successful"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Todo"
-        401:
-          $ref: '#/components/responses/unauthorized'
-        422:
-          $ref: '#/components/responses/failRequest'
-    get:
-      security:
-        - ApiKeyAuth: []
-        - BasicAuth: []
-        - BearerAuth: []
-      tags:
-        - tags2
-      summary: "/todo_list"
-      description: "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
-      parameters:
-        - $ref: "#/components/parameters/nameQuery"
-        - $ref: "#/components/parameters/daysQuery"
-        - $ref: "#/components/parameters/descriptionQuery"
-      responses:
-        200:
-          description: "successful"
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/ListTodo"
-        401:
-          $ref: '#/components/responses/unauthorized'
-        422:
-          $ref: '#/components/responses/failRequest'
+    $ref: ./controllers/todo_list.yml#/TodoList

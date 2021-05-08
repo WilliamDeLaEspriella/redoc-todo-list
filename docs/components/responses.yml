@@ -1,0 +1,25 @@
+unauthorized: 
+  description: Unauthorized
+  content: 
+    application/json:
+      schema:
+        errors: 
+        type: object
+        properties:
+          errors: 
+            type: object
+            properties:
+              message:
+                type: string
+                example: Unauthorized
+failRequest: 
+  description: Fail request
+  content: 
+    application/json:
+      schema:
+        errors: 
+        type: object
+        properties:
+          errors: 
+            type: string
+            example: unprocessable entity
